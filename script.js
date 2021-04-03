@@ -1,41 +1,35 @@
-function generateRandomNumber(num) {
-    // Gets # from 0 -> num - 1
-    return Math.floor(Math.random() * num)
-  }
-  
-  const collectiveWisdom = {
-    signInfo: ['star', 'moon', 'sun', 'comet'],
-    fortuneOutput: ['terrible luck', 'bad luck', 'ok luck', 'good luck', 'great luck'],
-    advice: ['go out and eat', 'not read this', 'play more', 'trust no one']
-  }
-  
-  // Store the 'wisdom' in an array
-  let personalWisdom = []
-  
-  // Iterate over the object
-  for(let prop in collectiveWisdom) {
-    let optionIdx = generateRandomNumber(collectiveWisdom[prop].length)
-  
-    // use the object's properties to customize the message being added to personalWisdom  
-    switch(prop) {
-      case 'signInfo':
-        personalWisdom.push(`Your sign right now is a "${collectiveWisdom[prop][optionIdx]}".`)
-        break
-      case 'fortuneOutput':
-        personalWisdom.push(`You are having: "${collectiveWisdom[prop][optionIdx]}".`)
-        break
-      case 'advice':
-        personalWisdom.push(`You should: "${collectiveWisdom[prop][optionIdx]}".`)
-        break
-      default:
-        personalWisdom.push('There is not enough info.')
-    }
-  }
-  
-  function formatWisdom(wisdom) {
+let messageStrings = {
+stringOne: ['Love', 'Gratitude', 'Trust', 'Calm mind'],
+stringTwo: ['to achieve your higest good.', 'to feel your inner being grow.', 'to experience the beauty of life.', 'tocreate tthe life of your dreams.'],
+stringThree: ['spend time in nature', 'get dog', 'meditate daily', 'avoid social media']
+}
 
-    const formatted = personalWisdom.join('\n')
+function generateRandomNumber(num){
+return Math.floor(Math.random()* num)
+}
+
+let personalMessage =[]
+for (let string in messageStrings){
+let index = generateRandomNumber(messageStrings[string].length)
+
+switch (string){
+    case 'stringOne':
+personalMessage.push(`What is needed now: ${messageStrings[string][index]} `);
+break;
+case 'stringTwo':
+personalMessage.push(`Why is needed: ${messageStrings[string][index]}`);
+break;
+case 'stringThree':
+personalMessage.push(`What to do: ${messageStrings[string][index]}`);
+break;
+default:
+personalMessage.push('Not enough info.');
+}
+}
+
+  function formatWisdom(wisdom) {
+    const formatted = personalMessage.join('\n')
     console.log(formatted)
   }
   
-  formatWisdom(personalWisdom);
+  formatWisdom(personalMessage);
